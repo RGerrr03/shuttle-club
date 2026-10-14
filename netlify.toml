@@ -1,0 +1,10 @@
+[build]
+  command = "mkdir -p public && cp netlify-index.html public/index.html"
+  publish = "public"
+  functions = "netlify/functions"
+[build.environment]
+  NODE_VERSION = "24"
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cache-Control = "no-cache"
