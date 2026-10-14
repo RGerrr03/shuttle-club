@@ -1,15 +1,16 @@
 # 羽球局 · Shuttle Club
 
-羽毛球战绩应用：到场选人、15 / 21 分选择、固定两位选手分开抽签、1v1 / 2v2 / 3v3 比分、个人胜率、历史记录和横屏记分。
+七位球友；抽签前选择到场人员；15/21 分；固定两人分队；1v1、2v2、3v3；胜率及横屏记分。
 
-## 源码
+网站入口：https://rgerrr03.github.io/shuttle-club/
 
-完整源码见 [shuttle-club-source.zip](shuttle-club-source.zip)。下载后解压 `shuttle-club/` 目录。
+GitHub Pages 提供静态网页；Neon 免费项目提供 Auth 与 Data API。球友公开只读，数据库权限限制只有已验证并绑定的管理员能写入。管理员邮箱仅保存在私有数据库表中。
 
-归档包含页面、后端接口、数据库 schema 与迁移、依赖锁文件和测试。保留完整目录结构，不包含密钥、正式数据、依赖安装目录或原托管站点身份。
+## 开发与发布
+Node.js 24，npm ci 后执行 npm run check 和 npm test。
+配置 PUBLIC_AUTH_URL 和 PUBLIC_DATA_API_URL 后执行 npm run build，生成 dist/index.html。
+GitHub Pages 从 main 分支根目录发布 index.html。
 
-## 部署状态
+scripts/data-api.sql 为现有 club_state、club_owner 表配置 RLS 与 RPC。新数据库需先创建表、初始化名单，并在 club_private.settings 安全设置管理员邮箱。不要将数据库密码、访问密钥或管理员配置提交到公开仓库。
 
-本仓库当前为源码归档，尚未部署公网网站。原应用依赖 Cloudflare D1 及 Sites 的 ChatGPT 登录；在其他平台部署时需要适配数据库和管理员认证。GitHub 仓库链接不是应用访问地址。
-
-解压后查看项目内 README.md 了解运行结构和测试说明。
+源码归档：shuttle-club-source.zip；根目录 index.html 为发布构建。
