@@ -1,5 +1,5 @@
 [build]
-  command = "mkdir -p public && cp netlify-index.html public/index.html"
+  command = "mkdir -p public && cp netlify-index.html public/index.html && cp lailiangpai-icon.png manifest.webmanifest public/"
   publish = "public"
   functions = "netlify/functions"
 [build.environment]
